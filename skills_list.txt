@@ -1,0 +1,13 @@
+Python
+Java
+JavaScript
+SQL
+AWS
+Docker
+Kubernetes
+Machine Learning
+Data Analysis
+Cloud Computing
+Project Management
+Communication
+Leadership

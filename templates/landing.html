@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>MatchMySkills - Find Jobs That Fit Your Skills</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background: #0d1117;
+      color: #c9d1d9;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow-x: hidden;
+      scroll-behavior: smooth; /* Enable smooth scrolling */
+    }
+
+    /* Particles.js container */
+    #particles-js {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background-color: #0d1117;
+      background-size: cover;
+      background-position: 50% 50%;
+      z-index: -1;
+      top: 0;
+      left: 0;
+    }
+
+    a {
+      color: #58a6ff;
+      text-decoration: none;
+    }
+    a:hover, a:focus {
+      text-decoration: underline;
+      outline: none;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 20px 50px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      z-index: 1;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+      border-bottom: 1px solid #30363d;
+      user-select: none;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: #58a6ff;
+      letter-spacing: 0.05em;
+    }
+
+    nav a {
+      margin-left: 25px;
+      font-weight: 600;
+      font-size: 1rem;
+      user-select: none;
+      cursor: pointer;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 60px 0 40px;
+    }
+    .hero h1 {
+      font-size: 2.4rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+      color: #58a6ff;
+    }
+    .hero h2 {
+      font-size: 1.15rem;
+      font-weight: 400;
+      color: #8b949e;
+      margin-bottom: 30px;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+      user-select: none;
+    }
+
+    .btn-group {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      background-color: #238636;
+      color: white;
+      padding: 12px 30px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 1.05rem;
+      cursor: pointer;
+      border: none;
+      box-shadow: 0 4px 10px rgba(35, 134, 54, 0.4);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      user-select: none;
+      text-align: center;
+      min-width: 110px;
+      display: inline-block;
+      text-decoration: none;
+    }
+    .btn:hover, .btn:focus {
+      background-color: #2ea043;
+      box-shadow: 0 6px 14px rgba(35, 134, 54, 0.7);
+      outline: none;
+      text-decoration: none;
+    }
+
+    .btn-secondary {
+      background-color: transparent;
+      color: #58a6ff;
+      box-shadow: none;
+      border: 1.5px solid #58a6ff;
+    }
+    .btn-secondary:hover, .btn-secondary:focus {
+      background-color: #58a6ff;
+      color: #0d1117;
+      box-shadow: 0 6px 14px rgba(88, 166, 255, 0.7);
+    }
+
+    .features {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      margin-bottom: 50px;
+      flex-wrap: wrap;
+      user-select: none;
+    }
+
+    .feature-card {
+      background-color: rgba(22, 27, 34, 0.75);
+      border: 1px solid #30363d;
+      border-radius: 10px;
+      padding: 20px 25px;
+      width: 250px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: box-shadow 0.3s ease;
+      cursor: default;
+    }
+    .feature-card:hover {
+      box-shadow: 0 8px 20px rgba(35, 134, 54, 0.5);
+    }
+    .feature-card h3 {
+      font-size: 1.15rem;
+      margin-top: 0;
+      margin-bottom: 8px;
+      font-weight: 700;
+      color: #58a6ff;
+    }
+    .feature-card p {
+      font-weight: 400;
+      color: #c9d1d9dd;
+      font-size: 0.95rem;
+      line-height: 1.4;
+    }
+
+    /* About section visible on page */
+    #about {
+      background: rgba(22, 27, 34, 0.5);
+      border-radius: 10px;
+      border: 1px solid #30363d;
+      padding: 30px 25px;
+      margin-bottom: 50px;
+      color: #c9d1d9;
+      font-size: 1rem;
+      line-height: 1.6;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+      user-select: none;
+    }
+    #about h2 {
+      color: #58a6ff;
+      font-weight: 700;
+      margin-top: 0;
+      margin-bottom: 12px;
+      user-select: none;
+    }
+
+    /* About the Creator */
+    .about-creator {
+      max-width: 700px;
+      margin: 0 auto 60px;
+      padding: 25px;
+      background-color: rgba(22, 27, 34, 0.5);
+      border-radius: 10px;
+      border: 1px solid #30363d;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+      color: #c9d1d9cc;
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.6;
+      text-align: center;
+      user-select: none;
+    }
+    .about-creator h2 {
+      color: #58a6ff;
+      font-weight: 700;
+      margin-bottom: 12px;
+      user-select: none;
+    }
+
+    footer {
+      border-top: 1px solid #30363d;
+      padding: 25px 20px;
+      background: #0d1117;
+      text-align: center;
+      color: #8b949e;
+      font-size: 0.9rem;
+      user-select: none;
+      position: relative;
+      z-index: 1;
+    }
+    footer a {
+      color: #58a6ff;
+      margin: 0 8px;
+      font-size: 1.1rem;
+      vertical-align: middle;
+    }
+    footer a:hover, footer a:focus {
+      color: #2ea043;
+      outline: none;
+    }
+
+    @media (max-width: 768px) {
+      .features {
+        flex-direction: column;
+        align-items: center;
+      }
+      .feature-card {
+        width: 90%;
+        max-width: 350px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Particle background container -->
+  <div id="particles-js"></div>
+
+  <div class="container">
+
+    <!-- Header / Nav -->
+    <header role="banner" aria-label="Primary navigation">
+      <div class="logo" aria-label="MatchMySkills logo">MatchMySkills</div>
+      <nav aria-label="Site navigation">
+        <a href="{{ url_for('index') }}">Home</a>
+        <a href="#about" id="learnMoreBtnNav">About</a>
+        <a href="{{ url_for('login') }}">Login</a>
+        <a href="{{ url_for('register') }}">Register</a>
+      </nav>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero" role="main" aria-labelledby="hero-heading">
+      <h1 id="hero-heading">Your Skills. Your Match. Your Career Journey Starts Here.</h1>
+      <h2>Find jobs that fit your true skillset — not just your title.</h2>
+      <div class="btn-group" role="group" aria-label="Call to action buttons">
+        <a href="{{ url_for('login') }}" class="btn" role="button" tabindex="0">Login</a>
+        <a href="{{ url_for('register') }}" class="btn" role="button" tabindex="0">Register</a>
+        <a href="#about" id="learnMoreBtn" class="btn btn-secondary" role="button" tabindex="0">Learn More</a>
+      </div>
+    </section>
+
+    <!-- Feature Cards -->
+    <section class="features" aria-label="Platform features and benefits">
+      <article class="feature-card" tabindex="0">
+        <h3>What is MatchMySkills?</h3>
+        <p>MatchMySkills connects your resume with real job listings based on your skills — not just job titles.</p>
+      </article>
+      <article class="feature-card" tabindex="0">
+        <h3>How It Works</h3>
+        <p>Upload your resume, choose a role, and instantly get personalized job matches that fit you.</p>
+      </article>
+      <article class="feature-card" tabindex="0">
+        <h3>Why Skills Matter</h3>
+        <p>We prioritize your skills over job titles to give you more relevant and accurate job matches.</p>
+      </article>
+      <article class="feature-card" tabindex="0">
+        <h3>Start Your Journey</h3>
+        <p>Whether you’re a student, fresher, or professional, find opportunities that truly match your abilities.</p>
+      </article>
+    </section>
+
+    <!-- About Section (Replaces Modal) -->
+    <section id="about" aria-labelledby="about-heading" tabindex="0">
+      <h2 id="about-heading">About MatchMySkills</h2>
+      <p>
+        MatchMySkills is a simple yet powerful web platform designed especially for students, freshers, and professionals who want to find job opportunities that truly fit their skills. Unlike many traditional job portals that rely mainly on job titles or keywords, MatchMySkills digs deeper by analyzing the skills extracted directly from your resume, providing personalized and relevant job matches.
+      </p>
+      <p>
+        This project uses a combination of advanced tools and modern technologies to deliver this experience:
+      </p>
+      <ul>
+        <li>The backend is built with Python and Flask, a lightweight web framework that handles user authentication, resume upload, and job matching logic seamlessly.</li>
+        <li>For resume processing, it uses PyMuPDF to extract text from uploaded PDF resumes safely and efficiently.</li>
+        <li>It leverages spaCy, a powerful Natural Language Processing (NLP) library, to analyze the resume text and extract important skill phrases and entities.</li>
+        <li>To find the best job matches, it employs Sentence Transformers models (like all-MiniLM-L6-v2) to convert resumes and job descriptions into mathematical vectors and then compares these vectors using semantic similarity — meaning matches are based on the meaning of skills, not just exact keywords.</li>
+        <li>Job listings are fetched in real-time from the Adzuna Job Search API, focusing on roles and locations relevant to the user.</li>
+        <li>The frontend uses clean HTML and Jinja2 templates for forms and results display, styled with custom CSS for a user-friendly interface inspired by GitHub’s dark theme.</li>
+        <li>The project is organized with a Python virtual environment (venv) to manage dependencies like Flask, spaCy, PyMuPDF, requests, and sentence-transformers, ensuring a smooth development and deployment process.</li>
+      </ul>
+    </section>
+
+    <!-- About the Creator -->
+    <section class="about-creator" aria-labelledby="creator-heading">
+      <h2 id="creator-heading">About the Creator</h2>
+      <p>
+        I’m Sindhoora K H, a passionate web developer with a strong interest in AI and building tools that solve real problems. I created MatchMySkills to help students, freshers, and professionals find job opportunities that truly match their abilities. Instead of relying on job titles alone, this platform focuses on what really matters — your skills. My goal is to make the job search process smarter, simpler, and more relevant by connecting people with opportunities where they truly fit.
+      </p>
+    </section>
+
+  </div>
+
+  <!-- Footer -->
+  <footer role="contentinfo">
+    <p>&copy; 2025 MatchMySkills. All rights reserved.</p>
+    <p>
+      <a href="#about" aria-label="About MatchMySkills">About</a> |
+      <a href="mailto:contact@matchmyskills.com" aria-label="Contact MatchMySkills">Contact</a> |
+      <a href="#" aria-label="Privacy Policy">Privacy Policy</a>
+    </p>
+    <p>
+      <a href="https://github.com/SindhooraKH" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+      <a href="https://linkedin.com/in/sindhoorakh" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+    </p>
+  </footer>
+
+  <!-- Particles.js initialization -->
+ <script>
+  particlesJS("particles-js", {
+    "particles": {
+      "number": { "value": 60, "density": { "enable": true, "value_area": 800 } },
+      "color": { "value": "#58a6ff" },
+      "shape": {
+        "type": "circle",
+        "stroke": { "width": 0, "color": "#000000" },
+        "polygon": { "nb_sides": 5 }
+      },
+      "opacity": {
+        "value": 0.4,
+        "random": false,
+        "anim": { "enable": false }
+      },
+      "size": {
+        "value": 3,
+        "random": true,
+        "anim": { "enable": false }
+      },
+      "line_linked": {
+        "enable": true,
+        "distance": 130,
+        "color": "#58a6ff",
+        "opacity": 0.4,
+        "width": 1
+      },
+      "move": {
+        "enable": true,
+        "speed": 0.6,
+        "direction": "none",
+        "random": false,
+        "straight": false,
+        "out_mode": "out",
+        "bounce": false,
+        "attract": {
+          "enable": false,
+          "rotateX": 600,
+          "rotateY": 1200
+        }
+      }
+    },
+    "interactivity": {
+      "detect_on": "canvas",
+      "events": {
+        "onhover": { "enable": true, "mode": "repulse" },
+        "onclick": { "enable": true, "mode": "push" },
+        "resize": true
+      },
+      "modes": {
+        "grab": { "distance": 400, "line_linked": { "opacity": 1 } },
+        "bubble": { "distance": 400, "size": 40, "duration": 2, "opacity": 8, "speed": 3 },
+        "repulse": { "distance": 200, "duration": 0.4 },
+        "push": { "particles_nb": 4 },
+        "remove": { "particles_nb": 2 }
+      }
+    },
+    "retina_detect": true
+  });
+</script>

@@ -1,0 +1,8 @@
+We are looking for a Software Engineer with strong skills in Python, machine learning, and data analysis. The ideal candidate has experience in web development frameworks and a solid foundation in computer science fundamentals.
+
+Required skills:
+- Proficient in Python programming, data analysis, and machine learning techniques
+- Experience with web frameworks such as Django, Flask, and React.js
+- Strong understanding of algorithms, data structures, and software design principles
+- Familiarity with databases, REST APIs, and version control systems (Git)
+- Excellent teamwork, communication skills, and ability to work in agile environments

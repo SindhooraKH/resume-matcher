@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Job Matches for {{ role }}</title>
+</head>
+<body>
+    <h1>Top Job Matches for "{{ role }}"</h1>
+
+    {% if matched_jobs %}
+        <ul>
+        {% for job in matched_jobs %}
+            <li>
+                <strong>{{ job.title }}</strong> - {{ job.location }} <br>
+                Similarity: {{ job.similarity }}% <br>
+                Description snippet: {{ job.description }} <br><br>
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No job matches found.</p>
+    {% endif %}
+    <a href="/">Try Again</a>
+</body>
+</html>
